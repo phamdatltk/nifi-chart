@@ -131,8 +131,8 @@ auth:
 
   # Automaticaly disabled if OIDC or LDAP enabled
   singleUser:
-    username: username
-    password: changemechangeme # Must to have at least 12 characters
+    username: admin
+    password: phamdat280102 # Must to have at least 12 characters
 
   clientAuth:
     enabled: false
@@ -228,12 +228,30 @@ containerPorts: []
 ## Configure Ingress based on the documentation here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ##
 ingress:
-  enabled: false
+  enabled: true
   # className: nginx
-  annotations: {}
-  tls: []
-  hosts: []
+  # annotations: {}
+  tls:
+    # Enable TLS termination for the web Ingress
+    enabled: true
+    # the name of a pre-created Secret containing a TLS private key and certificate
+    secretName: "demo-apache-nifi-dpaas.iotpez.com-tls-secret"
+  # hosts: []
   path: /
+  annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-fptcloud-dpaas
+      kubernetes.io/ingress.class: fptcloud-dpaas-nginx
+  hosts:
+    # The hostname for the web Ingress (can be templated)
+       - name: demo-apache-nifi-dpaas.iotpez.com
+         # configs for web Ingress TLS
+         tls:
+           # Enable TLS termination for the web Ingress
+           enabled: true
+           # the name of a pre-created Secret containing a TLS private key and certificate
+           secretName: "demo-apache-nifi-dpaas.iotpez.com-tls-secret"
+
+  
   # If you want to change the default path, see this issue https://github.com/cetic/helm-nifi/issues/22
 
 # Amount of memory to give the NiFi java heap
