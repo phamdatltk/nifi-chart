@@ -227,30 +227,39 @@ containerPorts: []
 
 ## Configure Ingress based on the documentation here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ##
-ingress:
-  enabled: true
-  # className: nginx
-  # annotations: {}
-  tls:
-    # Enable TLS termination for the web Ingress
-    enabled: true
-    # the name of a pre-created Secret containing a TLS private key and certificate
-    secretName: "demo-apache-nifi-dpaas.iotpez.com-tls-secret"
-  # hosts: []
-  path: /
-  annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-fptcloud-dpaas
-      kubernetes.io/ingress.class: fptcloud-dpaas-nginx
-  hosts:
-    # The hostname for the web Ingress (can be templated)
-       - name: demo-apache-nifi-dpaas.iotpez.com
-         # configs for web Ingress TLS
-         tls:
-           # Enable TLS termination for the web Ingress
-           enabled: true
-           # the name of a pre-created Secret containing a TLS private key and certificate
-           secretName: "demo-apache-nifi-dpaas.iotpez.com-tls-secret"
 
+
+# ingress:
+#   enabled: true
+#   # className: nginx
+#   # annotations: {}
+#   tls:
+#     # Enable TLS termination for the web Ingress
+#     enabled: true
+#     # the name of a pre-created Secret containing a TLS private key and certificate
+#     secretName: "demo-apache-nifi-dpaas.iotpez.com-tls-secret"
+#   # hosts: []
+#   path: /
+#   annotations:
+#       cert-manager.io/cluster-issuer: letsencrypt-fptcloud-dpaas
+#       kubernetes.io/ingress.class: fptcloud-dpaas-nginx
+#   hosts:
+#     # The hostname for the web Ingress (can be templated)
+#        - name: demo-apache-nifi-dpaas.iotpez.com
+#          # configs for web Ingress TLS
+#          tls:
+#            # Enable TLS termination for the web Ingress
+#            enabled: true
+#            # the name of a pre-created Secret containing a TLS private key and certificate
+#            secretName: "demo-apache-nifi-dpaas.iotpez.com-tls-secret"
+
+ingress:
+  enabled: false
+  # className: nginx
+  annotations: {}
+  tls: []
+  hosts: []
+  path: /
   
   # If you want to change the default path, see this issue https://github.com/cetic/helm-nifi/issues/22
 
