@@ -247,7 +247,7 @@ ingress:
             service:
               name: apache-nifi-demo
               port:
-                number: 8083
+                number: 8443
 
          # configs for web Ingress TLS
         #  tls:
