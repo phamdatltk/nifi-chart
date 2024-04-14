@@ -237,7 +237,7 @@ ingress:
     kubernetes.io/ingress.class: fptcloud-dpaas-nginx
   path: /
   hosts:
-    - name: demo-apache-nifi-dpaas.iotpez.com
+    - name: demo-apache-nifi-dpaas.iotpez
       http:
       paths:
         - path: /
@@ -249,7 +249,7 @@ ingress:
                 number: 8443
   tls:
     - hosts:
-        - demo-apache-nifi-dpaas.iotpez.com
+        - demo-apache-nifi-dpaas.iotpez
       secretName: "demo-apache-nifi-dpaas.iotpez.com-tls-secret"
 
 # ingress:
