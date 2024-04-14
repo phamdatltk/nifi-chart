@@ -239,15 +239,15 @@ ingress:
   hosts:
     # The hostname for the web Ingress (can be templated)
     - name: demo-apache-nifi-dpaas.iotpez.com
-      http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: apache-nifi-demo
-              port:
-                number: 8443
+      # http:
+      # paths:
+      #   - path: /
+      #     pathType: Prefix
+      #     backend:
+      #       service:
+      #         name: apache-nifi-demo
+      #         port:
+      #           number: 8443
 
          # configs for web Ingress TLS
         #  tls:
