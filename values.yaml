@@ -257,7 +257,7 @@ ingress:
         #    secretName: "demo-apache-nifi-dpaas.iotpez.com-tls-secret"
   tls:
     # Enable TLS termination for the web Ingress
-    enabled: true
+    # enabled: true
     - hosts:
         - demo-apache-nifi-dpaas.iotpez.com
     # the name of a pre-created Secret containing a TLS private key and certificate
