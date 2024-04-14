@@ -237,19 +237,20 @@ ingress:
     kubernetes.io/ingress.class: fptcloud-dpaas-nginx
   path: /
   hosts:
-    - name: demo-apache-nifi-dpaas.iotpez
-      http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: apache-nifi-demo
-              port:
-                number: 8443
+  - demo-apache-nifi-dpaas.iotpez.com
+    # - name: demo-apache-nifi-dpaas.iotpez.com
+    #   http:
+    #   paths:
+    #     - path: /
+    #       pathType: Prefix
+    #       backend:
+    #         service:
+    #           name: apache-nifi-demo
+    #           port:
+    #             number: 8443
   tls:
     - hosts:
-        - demo-apache-nifi-dpaas.iotpez
+        - demo-apache-nifi-dpaas.iotpez.com
       secretName: "demo-apache-nifi-dpaas.iotpez.com-tls-secret"
 
 # ingress:
