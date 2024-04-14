@@ -237,32 +237,20 @@ ingress:
     kubernetes.io/ingress.class: fptcloud-dpaas-nginx
   path: /
   hosts:
-    # The hostname for the web Ingress (can be templated)
     - name: demo-apache-nifi-dpaas.iotpez.com
-      # http:
-      # paths:
-      #   - path: /
-      #     pathType: Prefix
-      #     backend:
-      #       service:
-      #         name: apache-nifi-demo
-      #         port:
-      #           number: 8443
-
-         # configs for web Ingress TLS
-        #  tls:
-        #    # Enable TLS termination for the web Ingress
-        #    enabled: true
-        #    # the name of a pre-created Secret containing a TLS private key and certificate
-        #    secretName: "demo-apache-nifi-dpaas.iotpez.com-tls-secret"
+      http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: apache-nifi-demo
+              port:
+                number: 8443
   tls:
-    # Enable TLS termination for the web Ingress
-    # enabled: true
     - hosts:
         - demo-apache-nifi-dpaas.iotpez.com
-    # the name of a pre-created Secret containing a TLS private key and certificate
       secretName: "demo-apache-nifi-dpaas.iotpez.com-tls-secret"
-  # hosts: []
 
 # ingress:
 #   enabled: false
