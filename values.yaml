@@ -91,7 +91,7 @@ properties:
   # use externalSecure for when inbound SSL is provided by nginx-ingress or other external mechanism
   externalSecure: false
   isNode: false
-  # httpsPort: 8443
+  httpsPort: 8443
   httpPort: 8080
   webProxyHost: # <clusterIP>:<NodePort> (If Nifi service is NodePort or LoadBalancer)
   clusterPort: 6007
@@ -193,7 +193,7 @@ headless:
 # ui service
 service:
   type: ClusterIP
-  # httpsPort: 8443
+  httpsPort: 8443
   httpPort: 8080
   # nodePort: 30236
   annotations: {}
