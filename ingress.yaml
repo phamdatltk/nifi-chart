@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: apache-nifi
+  namespace: datpt
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-fptcloud-dpaas
+    kubernetes.io/ingress.class: "fptcloud-dpaas-nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/upstream-vhost: "localhost:8443"
+    nginx.ingress.kubernetes.io/proxy-redirect-from: "https://localhost:8443"
+    nginx.ingress.kubernetes.io/proxy-redirect-to: "https://datpt-apache-nifi-dpaas.iotpez.com"
+spec:
+  tls:
+    - hosts:
+        - datpt-apache-nifi-dpaas.iotpez.com
+      secretName: datpt-apache-nifi-dpaas.iotpez.com-tls-secret
+  rules:
+    - host: datpt-apache-nifi-dpaas.iotpez.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nifi
+                port:
+                  number: 8443

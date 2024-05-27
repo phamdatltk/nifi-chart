@@ -1,0 +1,55 @@
+image:
+  repository: registry.fke.fptcloud.com/257da301-3d4a-4fbc-ae61-38478807ed81/apache-nifi-custom
+  tag: "1.0.0"
+  pullPolicy: "IfNotPresent"
+  pullSecret: fptcloud-dpaas-regcred
+
+imageCredentials:
+  registry: https://registry.fke.fptcloud.com/257da301-3d4a-4fbc-ae61-38478807ed81
+  username: datpt72@fpt.com
+  password: 3O5jgz4a4ITfAdfm4PWenugl1xRZccQO
+  email: datpt72@fpt.com
+
+
+replicaCount: 1
+zookeeper:
+  replicaCount: 1
+#properties:
+#  isNode: true
+#certManager:
+#  enabled: true
+auth:
+  singleUser:
+    username: admin
+    password: phamdat280102
+
+#ingress:
+#  enabled: true
+#  className: fptcloud-dpaas-nginx
+#  annotations:
+#    cert-manager.io/cluster-issuer: letsencrypt-fptcloud-dpaas
+#    kubernetes.io/ingress.class: "fptcloud-dpaas-nginx"
+#    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+#    nginx.ingress.kubernetes.io/upstream-vhost: "localhost:8443"
+#    nginx.ingress.kubernetes.io/proxy-redirect-from: "https://localhost:8443"
+#    nginx.ingress.kubernetes.io/proxy-redirect-to: "datpt-apache-nifi-dpaas.iotpez.com"
+#    kubernetes.io/tls-acme: "true"
+#    nginx.ingress.kubernetes.io/affinity: "cookie"
+#    nginx.ingress.kubernetes.io/session-cookie-name: "hello-cookie"
+#    nginx.ingress.kubernetes.io/session-cookie-expires: "157680000"
+#    nginx.ingress.kubernetes.io/session-cookie-max-age: "157680000"
+#    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+#    nginx.ingress.kubernetes.io/affinity-mode: persistent
+#    nginx.ingress.kubernetes.io/session-cookie-hash: sha1
+#    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+#    nginx.ingress.kubernetes.io/configuration-snippet: |
+#      proxy_set_header 'X-ProxyScheme' 'https';
+#      proxy_set_header 'X-ProxyPort' '443';
+#  tls:
+#    - hosts:
+#        - datpt-apache-nifi-dpaas.iotpez.com
+#      secretName: datpt-apache-nifi-dpaas.iotpez.com-tls-secret
+#  hosts:
+#    - datpt-apache-nifi-dpaas.iotpez.com
+#  path: /
+#  # If you want to change the default path, see this issue https://github.com/cetic/helm-nifi/issues/22
