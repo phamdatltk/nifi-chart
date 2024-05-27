@@ -6,8 +6,6 @@ image:
 
 imageCredentials:
   registry: https://registry.fke.fptcloud.com/257da301-3d4a-4fbc-ae61-38478807ed81
-  username: datpt72@fpt.com
-  password: 3O5jgz4a4ITfAdfm4PWenugl1xRZccQO
   email: datpt72@fpt.com
 
 
