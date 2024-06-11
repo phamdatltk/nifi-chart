@@ -1,0 +1,112 @@
+{
+   "name": "nifi",
+   "description": "test",
+   "app_id": "47466c48-052d-40b9-89f9-fef14b350fd7",
+   "is_required_install": true,
+   "k8s_cluster_id": "513dc665-ff12-4c58-a425-12924b9d43f8",
+   "helm_values": {
+         "image": {
+           "repository": "registry.fke.fptcloud.com/257da301-3d4a-4fbc-ae61-38478807ed81/apache-nifi-custom",
+           "tag": "1.0.0",
+           "pullPolicy": "IfNotPresent",
+           "pullSecret": "fptcloud-dpaas-regcred"
+         },
+         "imageCredentials": {
+           "registry": "https://registry.fke.fptcloud.com/257da301-3d4a-4fbc-ae61-38478807ed81",
+           "username": "datpt72@fpt.com",
+           "password": "3O5jgz4a4ITfAdfm4PWenugl1xRZccQO",
+           "email": "datpt72@fpt.com"
+         },
+         "persistence": {
+           "enabled": true,
+           "accessModes": ["ReadWriteOnce"],
+           "subPath": {
+             "enabled": false,
+             "name": "data",
+             "size": "35Gi"
+           },
+           "configStorage": {
+             "size": "100Mi"
+           },
+           "authconfStorage": {
+             "size": "100Mi"
+           },
+           "dataStorage": {
+             "size": "1Gi"
+           },
+           "flowfileRepoStorage": {
+             "size": "1Gi"
+           },
+           "contentRepoStorage": {
+             "size": "1Gi"
+           },
+           "provenanceRepoStorage": {
+             "size": "1Gi"
+           },
+           "logStorage": {
+             "size": "1Gi"
+           }
+         },
+         "replicaCount": 2,
+         "zookeeper": {
+             "replicaCount": 1
+         },
+         "ingress": {
+             "enabled": true,
+             "className": "<PROP-INGRESS-CLASS-NAME>",
+             "annotations": {
+             "cert-manager.io/cluster-issuer": "<PROP-CLUSTER-ISSUER>",
+             "kubernetes.io/ingress.class": "<PROP-INGRESS-CLASS-NAME>",
+             "nginx.ingress.kubernetes.io/backend-protocol": "HTTPS",
+             "nginx.ingress.kubernetes.io/upstream-vhost": "localhost:8443",
+             "nginx.ingress.kubernetes.io/proxy-redirect-from": "https://localhost:8443",
+             "nginx.ingress.kubernetes.io/proxy-redirect-to": "<ARGOCD-APP-NAME>.<PROP-DNS-AZURE-ZONE>",
+             "kubernetes.io/tls-acme": "true",
+             "nginx.ingress.kubernetes.io/affinity": "cookie",
+             "nginx.ingress.kubernetes.io/session-cookie-name": "hello-cookie",
+             "nginx.ingress.kubernetes.io/session-cookie-expires": "157680000",
+             "nginx.ingress.kubernetes.io/session-cookie-max-age": "157680000",
+             "nginx.ingress.kubernetes.io/ssl-redirect": "false",
+             "nginx.ingress.kubernetes.io/affinity-mode": "persistent",
+             "nginx.ingress.kubernetes.io/session-cookie-hash": "sha1",
+             "nginx.ingress.kubernetes.io/proxy-body-size": "50m",
+             "nginx.ingress.kubernetes.io/configuration-snippet": "proxy_set_header 'X-ProxyScheme' 'https';\nproxy_set_header 'X-ProxyPort' '443';"
+             },
+             "tls": [
+             {
+                 "hosts": [
+                 "<ARGOCD-APP-NAME>.<PROP-DNS-AZURE-ZONE>"
+                 ],
+                 "secretName": "<ARGOCD-APP-NAME>.<PROP-DNS-AZURE-ZONE>-tls-crt"
+             }
+             ],
+             "hosts": [
+             "<ARGOCD-APP-NAME>.<PROP-DNS-AZURE-ZONE>"
+             ],
+             "path": "/"
+         },
+         "auth": {
+             "singleUser": {
+             "username": "admin",
+             "password": "<RANDOM-16>"
+             }
+         },
+         "resources": {
+             "limits": {
+             "cpu": "500m",
+             "memory": "3072Mi"
+             },
+             "requests": {
+             "cpu": "500m",
+             "memory": "2048Mi"
+             }
+         },
+         "properties": {
+             "isNode": true
+         },
+         "certManager": {
+             "enabled": true
+         }
+         }
+ 
+ }
